@@ -13,10 +13,13 @@ git clone https://github.com/getmoneynote/docker-compose-moneywhere.git && cd do
 
 2. 为保证数据安全问题，请修改数据库默认密码，一共3个地方需要修改。
    1. docker-compose.yml文件 MYSQL_ROOT_PASSWORD变量
-   2. docker-compose.yml文件 healthcheck -p密码
+   2. docker-compose_healthcheck_check_bak.yml文件 MYSQL_ROOT_PASSWORD变量 和 -p密码
    3. api.env DB_PASSWORD变量修改
+   4. 添加docker-compose.yml和docker-compose_healthcheck_check_bak.yml文件的mysql服务设置,增加ports:3306和33060,端口映射
+   5. phpadmin登录时要查找docker虚拟机的IP才能登录mysql
 3. 为防止恶意注册，请修改默认邀请码。api.env文件，invite_code变量修改
 4. 执行命令
+   
 
 ```sh
 docker-compose up -d
